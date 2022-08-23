@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - rabbit
+      - db
+  rabbit:
+        image: rabbitmq
+        ports:
+            - "5672:5672"
+  db:
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  celery:
+    restart: always
+    build:
+      context: .
+    command: celery -A example_tasks worker -l info -c 8
+    volumes:
+      - .:/code
+    depends_on:
+      - rabbit
+      - web
+      - db
+
+
+volumes:
+  postgres_data:
