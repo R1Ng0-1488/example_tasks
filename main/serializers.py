@@ -22,7 +22,7 @@ class CreateTaskSerializer(serializers.ModelSerializer):
 		start_task.delay(task.id)
 		return task
 
-	def save(self, user):
+	def save(self, user: User):
 		return self.create(user=user)
 
 
