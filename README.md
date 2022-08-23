@@ -25,3 +25,6 @@
 
 ###  Добавление csv файлов
 ##### admin/main/csvfile/ GET
+
+###  Автодокументация
+##### swagger/ GET
