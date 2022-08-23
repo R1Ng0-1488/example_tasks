@@ -1,0 +1,9 @@
+SECRET_KEY=django-insecure-$l9^35w8@c$o+#afzq##7$d*khp+wwke+9(o3n$vr9yk%8o*nq
+DEBUG=True
+CELERY_BROKER_URL=amqp://guest:guest@rabbit:5672/
+CELERY_RESULT_BACKEND=amqp://guest:guest@rabbit:5672/
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+DB_NAME=postgres
+DB_HOST=db
+DB_PORT=5432
